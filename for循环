@@ -1,0 +1,23 @@
+//判断输入的数是否为素数
+
+#include <stdio.h>
+int main()
+{
+	int x;
+	scanf("%d",&x);
+	
+	int a=1;
+	
+	for(int i=2;i<x;i++)	//素数可以被1和其自身整除，因此循环内i要从2开始，且i!=x 
+	{
+		if(x%i==0)		//此时x是素数 
+			a=0;		//证伪 
+	}
+	
+	if(a==1)
+		printf("是素数");
+	else
+		printf("不是素数");
+	
+	return 0;
+}
