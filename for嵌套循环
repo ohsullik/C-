@@ -1,0 +1,30 @@
+//按大小输出前50个素数
+
+#include <stdio.h>
+int main()
+{
+	int x;
+	int count=0;
+	
+	for(x=1;count<50;x++)
+	{
+		int prime=1;		//x是素数
+		for(int i=2;i<x;i++)		//素数可以被1和其自身整除，因此i要从2开始，且i!=x 
+		{
+			if(x%i==0)		//此时x是素数
+			{
+				prime=0;		//证伪
+				break;
+			}
+		}
+		if(prime==1)
+		{
+			count++;
+			printf("%d\t",x);	// \t意为对齐
+			if(count%5==0)		//使输出结果表示为每5个数一行
+				printf("\n");	 
+		}
+	}
+	
+	return 0;
+}
