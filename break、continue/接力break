@@ -1,0 +1,27 @@
+//用一角、两角、五角硬币凑金额 
+#include <stdio.h>
+int main()
+{
+	int x;
+	scanf("%d",&x);
+	
+	int o,t,f;
+	int out=0; 
+	
+	for(o=1;o<x*10;o++){
+		for(t=1;t<x*5;t++){
+			for(f=1;f<x*2;f++){
+				if(o+t*2+f*5==x*10){
+					printf("使用%d个一角、%d个两角、%d个五角可以得到%d元。\n",o,t,f,x);
+					out=1;
+					break;		//只要得到一个结果，就直接输出，不需得到所有结果，即跳出循环		或者直接使用 goto out；
+				}
+			}
+			if(out==1)break;
+		}
+		if(out==1)break;		
+	}
+
+//out；
+	return 0;
+}
