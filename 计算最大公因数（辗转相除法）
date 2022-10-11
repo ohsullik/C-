@@ -1,0 +1,29 @@
+//计算两个数的最大公因数
+/*辗转相除法： 
+1.若b=0，计算结束，a即为最大公约数
+2.否则，计算a/b的余数，令a=b，b=余数
+3.回到第一步
+
+a	b	t
+12	18	12
+18	12	6
+12	6	0
+6	0 
+*/ 
+#include <stdio.h>
+int main()
+{
+	int a,b;
+	scanf("%d %d",&a,&b);
+	int t;
+	
+	while(b!=0){
+		t=a%b;
+		a=b;
+		b=t;
+		printf("a=%d b=%d t=%d\n",a,b,t);
+	}
+	printf("gcd=%d",a);
+	
+	return 0;
+}
