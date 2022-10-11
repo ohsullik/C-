@@ -1,0 +1,29 @@
+//正序分解整数：输入13425 输出1 3 4 2 5
+#include <stdio.h>
+int main()
+{
+	int x=0;
+	scanf("%d",&x);
+	int t=x; 	//第一轮的while循环会改变数值，所以用t来代替 
+
+//得到mask 
+	int mask=1; 	//mask要乘10，所以不可为0 
+	while(t>9){		//x为一位数时(t<9)，mask为1；x为两位数以上时才让mask*10 
+		t/=10;
+		mask*=10;
+	} 	
+//	int mask=pow(10,count-1);	//引用pow函数，使mask为10的（count-1）次方 （若count=5，即五位数，则mask=10000=10的4次方） 
+
+//正序分解整数（数字不含0）	
+	do{
+		int d=x/mask;	//得到x的最高位
+		printf("%d",d);
+		if(mask>0){		//循环条件为mask/=10，mask>0，所以最后一位时，mask一定为0 
+			printf(" ");	//输出时，最后一位数字后面不带空格 
+		}
+		x%=mask;		//除掉x的最高位
+		mask/=10; 
+	}while(mask>0);		//若条件写为x>0，对于x=700，只经过一轮循环后x即为0（70%10=0），此时就会跳出循环，而此时mask非0，循环还应继续才对 
+	
+	return 0;
+}
